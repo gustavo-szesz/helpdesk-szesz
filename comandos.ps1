@@ -1,4 +1,5 @@
-#Pegar uso de memoria RAM 
+<#
+ # {#Pegar uso de memoria RAM 
 GEt-Process | Select-Object ProcessName, @{ Name = "Memoria_GB"  Expression = { $_.PM / 1000000000 } }
 
 #Pegar servicos e separar por status 
@@ -75,3 +76,5 @@ ForEach-Object {
     }
 }
 
+:Enter a comment or description}
+#>
