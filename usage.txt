@@ -1,0 +1,249 @@
+
+Name                          CPU            WS
+----                          ---            --
+AggregatorHost                          6238208
+amdfendrsr                              2330624
+AMDRSServ                     57,58    89722880
+AMDRSSrcExt                   27,22    33382400
+ApplicationFrameHost          2,70     30531584
+atieclxx                               14204928
+atiesrxx                                2256896
+audiodg                       117,38   31252480
+AutoModeDetect                0,36      9953280
+backgroundTaskHost            2,33     55050240
+brave                         22,17    16871424
+brave                         297,20   51888128
+brave                         1,56     24084480
+brave                         856,94  282669056
+brave                         0,06     20856832
+brave                         234,64   19329024
+brave                         0,31      6279168
+brave                         18,67   342372352
+brave                         4373,06 314499072
+brave                         399,89  326877184
+brave                         2,98    148893696
+brave                         415,08  148668416
+brave                         0,19     57434112
+brave                         3,42    120659968
+brave                         0,09     33026048
+brave                         1,50    109027328
+brave                         79,50   419962880
+brave                         33,31   344813568
+BraveCrashHandler                       1748992
+BraveCrashHandler64                     1286144
+cmd                           0,14      3543040
+cncmd                         0,02      1622016
+conhost                       0,17      5853184
+conhost                       0,02      1351680
+CPUMetricsServer              0,08      3547136
+CrossDeviceResume             0,81     30756864
+csrss                                   3121152
+csrss                                   8142848
+ctfmon                        11,75    29642752
+DAX3API                                13787136
+DAX3API                                10559488
+dllhost                       0,08      5742592
+dwm                                   102993920
+ElevocControlService                    3358720
+explorer                      91,39   234737664
+FileCoAuth                    0,34     20271104
+FnHotkeyCapsLKNumLK           0,94      9117696
+FnHotkeyUtility               9,95     23031808
+fontdrvhost                              352256
+fontdrvhost                             5533696
+Idle                                       8192
+LenovoUtilityService                   12726272
+LNBITSSvc                               9060352
+LockApp                       3,56     62656512
+LsaIso                                  1777664
+lsass                                  19279872
+Memory Compression                    343912448
+Microsoft.CmdPal.UI           34,02    75124736
+MicrosoftEdgeUpdate                     5660672
+MpDefenderCoreService                  14282752
+msedge                        20,92   111620096
+msedge                        0,61     16343040
+msedge                        3,62     32210944
+msedge                        0,19      6537216
+msedge                        1,64     31797248
+msedge                        0,66     11476992
+msedge                        22,88   150237184
+msedgewebview2                0,92      2600960
+msedgewebview2                9,83     89743360
+msedgewebview2                3,05      2293760
+msedgewebview2                9,34      5824512
+msedgewebview2                8,47    125140992
+msedgewebview2                0,14      6610944
+msedgewebview2                0,78         4096
+msedgewebview2                0,61     13635584
+msedgewebview2                33,34      573440
+msedgewebview2                4,42     57491456
+msedgewebview2                0,12      5885952
+msedgewebview2                3,11     31776768
+msedgewebview2                6,88     10870784
+msiexec                                42229760
+MsMpEng                               258162688
+NgcIso                                   675840
+NisSrv                                  4595712
+OneDrive                      20,83   110440448
+OneDrive.Sync.Service         2,41      6905856
+OnScreen Control              106,44   94679040
+OnScreenControlControlService           8867840
+OpenConsole                   0,34     11931648
+OSCApplicationManager         43,81    18128896
+OSCApplicationManager         41,70    15642624
+PowerToys                     3,62     33443840
+PowerToys.AlwaysOnTop         19,39     4567040
+PowerToys.Awake               2,27     16891904
+PowerToys.ColorPickerUI       24,95    42164224
+PowerToys.CropAndLock         0,08      2977792
+PowerToys.FancyZones          3,97     22261760
+PowerToys.Peek.UI             1,09     15601664
+PowerToys.PowerLauncher       43,95    76988416
+pwsh                          7,39    156352512
+RadeonSoftware                44,72    33570816
+Registry                               51560448
+RiotClientCrashHandler        0,08      5492736
+RiotClientServices            206,06   63168512
+RtkAudUService64                        7069696
+RtkAudUService64              1,31     13271040
+RtkBtManServ                            3518464
+RuntimeBroker                 1,09     31051776
+RuntimeBroker                 7,16     42409984
+RuntimeBroker                 4,06     65458176
+RuntimeBroker                 0,47     13197312
+ScreenSplitterHook64App       1,55     14491648
+SearchHost                    8,02    116695040
+SearchIndexer                          36110336
+SearchProtocolHost                     18116608
+Secure System                          49016832
+SecurityHealthService                  14712832
+SecurityHealthSystray         0,59      9404416
+services                                7520256
+ShellExperienceHost           7,72     76472320
+ShellHost                     2,61    133246976
+sihost                        20,92    34770944
+smartscreen                   1,16     27746304
+smss                                     565248
+spoolsv                                 7131136
+StartMenuExperienceHost       10,33   151236608
+steam                         17,45   106233856
+steamservice                           17518592
+steamwebhelper                3,94     34377728
+steamwebhelper                0,30     24920064
+steamwebhelper                32,53   176734208
+steamwebhelper                0,03     15241216
+steamwebhelper                52,08   351612928
+steamwebhelper                0,16     21827584
+steamwebhelper                62,89   497094656
+steamwebhelper                0,12     50520064
+svchost                                 7237632
+svchost                                 4562944
+svchost                                34050048
+svchost                                15847424
+svchost                                 6430720
+svchost                                 6586368
+svchost                                20217856
+svchost                                 1208320
+svchost                                 5795840
+svchost                                 4222976
+svchost                                10649600
+svchost                                 7401472
+svchost                                 2801664
+svchost                                 5681152
+svchost                                 3850240
+svchost                                 6152192
+svchost                                14790656
+svchost                                 9785344
+svchost                                 2695168
+svchost                       2,44     51150848
+svchost                                 5832704
+svchost                       3,31     29536256
+svchost                                14995456
+svchost                                 1933312
+svchost                                 7086080
+svchost                                 6348800
+svchost                                 1699840
+svchost                                 8761344
+svchost                                 5287936
+svchost                                 6475776
+svchost                                 7733248
+svchost                                 7622656
+svchost                       1,58     17629184
+svchost                                 4464640
+svchost                                 4808704
+svchost                                12664832
+svchost                                 4841472
+svchost                                35766272
+svchost                                11759616
+svchost                                 7815168
+svchost                                11145216
+svchost                                 7933952
+svchost                                 1302528
+svchost                                 3223552
+svchost                                 7725056
+svchost                                38494208
+svchost                                38268928
+svchost                                 2187264
+svchost                                19034112
+svchost                                18161664
+svchost                                 2187264
+svchost                                 3203072
+svchost                       1,31     14442496
+svchost                                14938112
+svchost                                 4534272
+svchost                                15282176
+svchost                                 6811648
+svchost                                28872704
+svchost                                18616320
+svchost                       1,73     25952256
+svchost                                21274624
+svchost                                16719872
+svchost                                 8896512
+svchost                                 1544192
+svchost                                 5226496
+svchost                                 6008832
+svchost                                 9453568
+svchost                       2,56     31240192
+svchost                                16621568
+svchost                                31969280
+svchost                       0,08      4452352
+svchost                                 7639040
+svchost                                 6983680
+svchost                       0,25      6950912
+svchost                                10465280
+svchost                                28225536
+svchost                                 9256960
+svchost                       0,25      9043968
+svchost                                 2928640
+svchost                                18792448
+svchost                                 6225920
+svchost                                 4476928
+svchost                                10915840
+svchost                                10985472
+svchost                                15986688
+svchost                                 6778880
+svchost                                 8900608
+svchost                       0,42     11739136
+svchost                                 8884224
+svchost                                11722752
+svchost                                 8089600
+System                                 15319040
+SystemSettingsAdminFlows      0,08     10448896
+taskhostw                     1,44     16105472
+TextInputHost                 10,66    90808320
+unsecapp                                5013504
+unsecapp                      0,36      6414336
+unsecapp                      0,09     10039296
+UserOOBEBroker                0,02      8564736
+vgtray                        34,39     6897664
+Widgets                       11,00    52944896
+WidgetService                 1,44     15745024
+WindowsPackageManagerServer   2,39     33173504
+WindowsTerminal               4,73    102510592
+wininit                                 2703360
+winlogon                               11931648
+WmiPrvSE                               11722752
+wslservice                              4194304
+XPPenTablet                   1,91     18272256
+
