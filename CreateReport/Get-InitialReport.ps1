@@ -1,27 +1,5 @@
-function Test-IPConfiguration {
-    [CmdletBinding()]
-    param ()
-    
-    Get-NetIPConfiguration | ForEach-Object {
-        [PSCustomObject]@{
-            Category       = 'Network'
-            Name           = $_.InterfaceAlias
-            IPv4Address    = ($_.IPv4Address | ForEach-Object { $_.IPAddress }) -join ', '
-            IPv6Address    = ($_.IPv6Address | ForEach-Object { $_.IPAddress }) -join ', '
-            DefaultGateway = ($_.IPv4DefaultGateway | ForEach-Object { $_.NextHop }) -join ', '
-            DNSAddresses   = ($_.DNSServer | ForEach-Object { $_.ServerAddresses }) -join ', '
-            Result         = 'OK'
-        }
-    }
-}
-
-function Get-IPConfigurationReport {
-    Get-SystemInfo
-    Test-IPConfiguration
-}
-
-function Export-IPConfigurationReport {
-        <#
+function Get-InitialReport {
+    <#
     .SYNOPSIS
     Exporta relatório de configuração de rede em HTML
     
@@ -65,12 +43,15 @@ function Export-IPConfigurationReport {
 
     # Coleta os dados
     Write-Verbose "Coletando informações do sistema..."
-    $reportData = Get-IPConfigurationReport
+    $reportData = Get-ImportantInfo
 
-    # Separa SystemInfo e Network
+    # Separa por categoria
     $systemInfo = $reportData | Where-Object { $_.Category -eq 'SystemInfo' }
     $networkInfo = $reportData | Where-Object { $_.Category -eq 'Network' } 
+    $memoryInfo = $reportData | Where-Object { $_.Category -eq 'MemoryInfo' }
+    $diskInfo = $reportData | Where-Object { $_.Category -eq 'DiskInfo' }
 
+    # Carrega o template
     $templatePath = Join-Path $PSScriptRoot "..\report-template.html"
 
     if (-not (Test-Path $templatePath)) {
@@ -80,7 +61,7 @@ function Export-IPConfigurationReport {
 
     $template = Get-Content $templatePath -Raw
 
-    # Gera HTML para SystemInfo 
+    # Gera HTML para SystemInfo (Card bonito)
     $systemInfoHtml = @"
 <div class="system-info-card">
     <div class="info-grid">
@@ -91,6 +72,10 @@ function Export-IPConfigurationReport {
         <div class="info-item">
             <span class="info-label">Domínio</span>
             <span class="info-value">$($systemInfo.Domain)</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label">Usuário Atual</span>
+            <span class="info-value">$($systemInfo.CurrentUser)</span>
         </div>
         <div class="info-item">
             <span class="info-label">Fabricante</span>
@@ -110,28 +95,38 @@ function Export-IPConfigurationReport {
         </div>
     </div>
 </div>
-"@      
-    # HTML para NetworkInfo
+"@
+    
+    # HTML para NetworkInfo (Tabela)
     $networkInfoHtml = $networkInfo | ConvertTo-Html -Fragment -Property Name, IPv4Address, IPv6Address, DefaultGateway, DNSAddresses, Result
+    
+    # HTML para MemoryInfo (Tabela)
+    $memoryInfoHtml = $memoryInfo | ConvertTo-Html -Fragment -Property TotalRAM, FreeRAM, UsedRAM, Result
+    
+    # HTML para DiskInfo (Tabela)
+    $diskInfoHtml = $diskInfo | ConvertTo-Html -Fragment -Property Drive, Label, FileSystem, TotalSize, UsedSpace, FreeSpace, UsedPercent, HealthStatus, Result
 
-    # replace placeholders
+    # Substitui os placeholders no template
     $html = $template
     $html = $html -replace '{{REPORT_TITLE}}', 'Relatório de Configuração de Rede'
     $html = $html -replace '{{LOGO_URL}}', 'https://raw.githubusercontent.com/gustavo-szesz/helpdesk-szesz/refs/heads/main/Assets/poupa-tempo-pr.png'
     $html = $html -replace '{{SYSTEM_INFO}}', $systemInfoHtml
     $html = $html -replace '{{NETWORK_INFO}}', $networkInfoHtml
+    $html = $html -replace '{{MEMORY_INFO}}', $memoryInfoHtml
+    $html = $html -replace '{{DISK_INFO}}', $diskInfoHtml
     $html = $html -replace '{{TIMESTAMP}}', (Get-Date -Format 'dd/MM/yyyy HH:mm:ss')
 
-    # Salvar
+    # Salva o arquivo
     $html | Out-File -FilePath $Path -Encoding UTF8
 
     Write-Host "✅ Relatório gerado com sucesso!" -ForegroundColor Green
     Write-Host "📄 Arquivo: $Path" -ForegroundColor Cyan
     
-    # abrir
+    # Abre no navegador se solicitado
     if ($Open) {
         Invoke-Item $Path
     }
 
+    # Retorna o caminho do arquivo gerado
     return $Path
 }

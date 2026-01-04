@@ -11,9 +11,12 @@ function Get-SystemInfo {
         Timestamp       = $timestamp
         ComputerName    = $computerSystem.Name
         Domain          = $computerSystem.Domain
+        CurrentUser     = "$env:USERDOMAIN\$env:USERNAME"
         Manufacturer    = $computerSystem.Manufacturer
         Model           = $computerSystem.Model 
         SerialNumber    = $bios.SerialNumber
         Result          = 'OK'
     }
 }
+
+

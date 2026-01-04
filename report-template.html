@@ -172,12 +172,22 @@
         </div>
         
         <div class="section">
-            <h2 class="section-title"> Informações do Sistema</h2>
+            <h2 class="section-title">Informações do Sistema</h2>
             {{SYSTEM_INFO}}
         </div>
         
         <div class="section">
-            <h2 class="section-title"> Configuração de Rede</h2>
+            <h2 class="section-title">Memória RAM</h2>
+            {{MEMORY_INFO}}
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">Discos</h2>
+            {{DISK_INFO}}
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">Configuração de Rede</h2>
             {{NETWORK_INFO}}
         </div>
         
@@ -185,5 +195,15 @@
             Gerado em {{TIMESTAMP}} | Poupa Tempo Paraná - Suporte Técnico
         </div>
     </div>
+    
+    <script>
+        function toggleAccordion(header) {
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('.accordion-icon');
+            
+            content.classList.toggle('active');
+            icon.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
