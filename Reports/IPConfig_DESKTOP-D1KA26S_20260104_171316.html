@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Configuração de Rede</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .logo {
+            max-width: 400px;
+            height: auto;
+            margin-bottom: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .header .subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .section {
+            padding: 30px;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            color: #1e3a8a;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #22c55e;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        
+        th {
+            background-color: #1e3a8a;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+        
+        tr:hover {
+            background-color: #f3f4f6;
+        }
+        
+        .status-ok {
+            color: #22c55e;
+            font-weight: bold;
+        }
+        
+        .status-alert {
+            color: #ef4444;
+            font-weight: bold;
+        }
+        
+        .system-info-card {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border-left: 4px solid #22c55e;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .info-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .info-label {
+            font-size: 12px;
+            color: #6b7280;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .info-value {
+            font-size: 16px;
+            color: #1f2937;
+            font-weight: 500;
+        }
+        
+        .footer {
+            background-color: #f9fafb;
+            padding: 20px 30px;
+            text-align: center;
+            color: #6b7280;
+            font-size: 14px;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="https://i.imgur.com/YourLogoHere.png" alt="Logo Poupa Tempo Paraná" class="logo">
+            <h1>Relatório de Configuração de Rede</h1>
+            <div class="subtitle">Relatório de Diagnóstico Técnico</div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">📋 Informações do Sistema</h2>
+            <div class="system-info-card">
+    <div class="info-grid">
+        <div class="info-item">
+            <span class="info-label">Computador</span>
+            <span class="info-value">DESKTOP-D1KA26S</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label">Domínio</span>
+            <span class="info-value">WORKGROUP</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label">Fabricante</span>
+            <span class="info-value">LENOVO</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label">Modelo</span>
+            <span class="info-value">82MF</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label">Número de Série</span>
+            <span class="info-value">PE08GGS5</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label">Data da Verificação</span>
+            <span class="info-value">04/01/2026 17:13:16</span>
+        </div>
+    </div>
+</div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">🌐 Configuração de Rede</h2>
+            <table> <colgroup><col/><col/><col/><col/><col/><col/></colgroup> <tr><th>Name</th><th>IPv4Address</th><th>IPv6Address</th><th>DefaultGateway</th><th>DNSAddresses</th><th>Result</th></tr> <tr><td>Ethernet</td><td>10.0.0.51</td><td>2804:f30:9000:e79f:9a63:c21f:b424:5bc</td><td>10.0.0.1</td><td>2804:f30:8000::26, 2804:f30:0:10::30, 10.0.0.1</td><td>OK</td></tr> <tr><td>Wi-Fi</td><td>10.0.0.211</td><td>2804:f30:9000:e79f:8a24:7240:7a47:bf81</td><td>10.0.0.1</td><td>10.0.0.1</td><td>OK</td></tr> </table>
+        </div>
+        
+        <div class="footer">
+            Gerado em 04/01/2026 17:13:16 | Poupa Tempo Paraná - Suporte Técnico
+        </div>
+    </div>
+</body>
+</html>
+
