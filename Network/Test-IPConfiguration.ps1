@@ -1,23 +1,3 @@
-function Get-SystemInfo {
-    [CmdletBinding()]
-    param ()
-
-    $timestamp = Get-Date
-    $bios = Get-CimInstance Win32_BIOS
-    $computerSystem = Get-CimInstance Win32_ComputerSystem
-
-    [PSCustomObject]@{
-        Category        = 'SystemInfo'
-        Timestamp       = $timestamp
-        ComputerName    = $computerSystem.Name
-        Domain          = $computerSystem.Domain
-        Manufacturer    = $computerSystem.Manufacturer
-        Model           = $computerSystem.Model 
-        SerialNumber    = $bios.SerialNumber
-        Result          = 'OK'
-    }
-}
-
 function Test-IPConfiguration {
     [CmdletBinding()]
     param ()
@@ -82,7 +62,7 @@ function Export-IPConfigurationReport {
             New-Item -Path $directory -ItemType Directory | Out-Null
         }
     }
-    
+
     # Coleta os dados
     Write-Verbose "Coletando informações do sistema..."
     $reportData = Get-IPConfigurationReport
