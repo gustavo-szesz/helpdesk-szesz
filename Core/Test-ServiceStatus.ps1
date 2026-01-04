@@ -1,20 +1,31 @@
 function Test-ServiceStatus {
+    [CmdletBinding()]
     param (
+        [Parameter(Mandatory)]
         [string[]]$CriticalServices
     )
-    Get-Service | ForEach-Object {
-        $result = if ($CriticalServices -contains $_.Name -and $_.Status -ne "Running") {
-            "ALERT"
-        }  else {
-            "OK"
+
+    foreach ($serviceName in $CriticalServices) {
+
+        $service = Get-Service -Name $serviceName -ErrorAction SilentlyContinue
+
+        if (-not $service) {
+            [PSCustomObject]@{
+                Category = 'Service'
+                Name     = $serviceName
+                Status   = 'NotFound'
+                Result   = 'ALERT'
+            }
+            continue
         }
 
+        $result = if ($service.Status -ne 'Running') { 'ALERT' } else { 'OK' }
+
         [PSCustomObject]@{
-            Category = "Service"
-            Name     = $_.Name
-            Status   = $_.Status
+            Category = 'Service'
+            Name     = $service.Name
+            Status   = $service.Status
             Result   = $result
         }
     }
-    
 }
