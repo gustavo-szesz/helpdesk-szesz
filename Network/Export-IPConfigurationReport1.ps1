@@ -26,6 +26,7 @@ function Export-IPConfigurationReport {
     )
     
     # Define o caminho padrão se não especificado
+    # vou definir o caminho como %temp%/report-poupa-tempo/
     if (-not $Path) {
         $computerName = $env:COMPUTERNAME
         $timestamp = Get-Date -Format 'yyyyMMdd_HHmmss'
@@ -94,7 +95,7 @@ function Export-IPConfigurationReport {
     # Substitui os placeholders no template
     $html = $template
     $html = $html -replace '{{REPORT_TITLE}}', 'Relatório de Configuração de Rede'
-    $html = $html -replace '{{LOGO_URL}}', 'https://i.imgur.com/YourLogoHere.png'  # Você vai substituir depois
+    $html = $html -replace '{{LOGO_URL}}', 'https://raw.githubusercontent.com/gustavo-szesz/helpdesk-szesz/refs/heads/main/Assets/poupa-tempo-pr.png'  # Você vai substituir depois
     $html = $html -replace '{{SYSTEM_INFO}}', $systemInfoHtml
     $html = $html -replace '{{NETWORK_INFO}}', $networkInfoHtml
     $html = $html -replace '{{TIMESTAMP}}', (Get-Date -Format 'dd/MM/yyyy HH:mm:ss')

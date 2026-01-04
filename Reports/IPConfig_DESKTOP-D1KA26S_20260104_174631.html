@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{REPORT_TITLE}}</title>
+    <title>Relatório de Configuração de Rede</title>
     <style>
         * {
             margin: 0;
@@ -50,7 +50,7 @@
         
         .subtitle-bar {
             background: #22c55e;
-            color: #ffffff;
+            color: #1f3669;
             padding: 12px 30px;
             font-size: 16px;
             font-weight: bold;
@@ -59,7 +59,7 @@
         
         
         .section {
-            padding: 20px; 
+            padding: 20px;  /* Era 30px */
         }
         
         .section-title {
@@ -110,9 +110,9 @@
         .system-info-card {
             background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
             border-left: 4px solid #22c55e;
-            padding: 15px;  
-            margin-bottom: 15px;  
-            border-radius: 2px;  
+            padding: 15px;  /* Era 20px */
+            margin-bottom: 15px;  /* Era 20px */
+            border-radius: 2px;  /* Era 4px */
         }
         
         .info-grid {
@@ -164,26 +164,54 @@
     <div class="container">
         <div class="header">
             <div class="logo-bar">
-                <img src="{{LOGO_URL}}" alt="Logo Poupa Tempo Paraná" class="logo">
+                <img src="https://raw.githubusercontent.com/gustavo-szesz/helpdesk-szesz/refs/heads/main/Assets/poupa-tempo-pr.png" alt="Logo Poupa Tempo Paraná" class="logo">
             </div>
             <div class="subtitle-bar">
-                {{REPORT_TITLE}} - Relatório de Diagnóstico Técnico
+                Relatório de Configuração de Rede - Relatório de Diagnóstico Técnico
             </div>
         </div>
         
         <div class="section">
             <h2 class="section-title"> Informações do Sistema</h2>
-            {{SYSTEM_INFO}}
+            <div class="system-info-card">
+    <div class="info-grid">
+        <div class="info-item">
+            <span class="info-label">Computador</span>
+            <span class="info-value">DESKTOP-D1KA26S</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label">Domínio</span>
+            <span class="info-value">WORKGROUP</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label">Fabricante</span>
+            <span class="info-value">LENOVO</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label">Modelo</span>
+            <span class="info-value">82MF</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label">Número de Série</span>
+            <span class="info-value">PE08GGS5</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label">Data da Verificação</span>
+            <span class="info-value">04/01/2026 17:46:31</span>
+        </div>
+    </div>
+</div>
         </div>
         
         <div class="section">
             <h2 class="section-title"> Configuração de Rede</h2>
-            {{NETWORK_INFO}}
+            <table> <colgroup><col/><col/><col/><col/><col/><col/></colgroup> <tr><th>Name</th><th>IPv4Address</th><th>IPv6Address</th><th>DefaultGateway</th><th>DNSAddresses</th><th>Result</th></tr> <tr><td>Ethernet</td><td>10.0.0.51</td><td>2804:f30:9000:e79f:9a63:c21f:b424:5bc</td><td>10.0.0.1</td><td>2804:f30:8000::26, 2804:f30:0:10::30, 10.0.0.1</td><td>OK</td></tr> <tr><td>Wi-Fi</td><td>10.0.0.211</td><td>2804:f30:9000:e79f:8a24:7240:7a47:bf81</td><td>10.0.0.1</td><td>10.0.0.1</td><td>OK</td></tr> </table>
         </div>
         
         <div class="footer">
-            Gerado em {{TIMESTAMP}} | Poupa Tempo Paraná - Suporte Técnico
+            Gerado em 04/01/2026 17:46:31 | Poupa Tempo Paraná - Suporte Técnico
         </div>
     </div>
 </body>
 </html>
+
