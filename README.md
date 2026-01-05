@@ -2,6 +2,8 @@
 
 Projeto criado para ter comandos úteis para suporte técnico do N1 a N2|N3
 
+Link de acesso: https://encurtador.com.br/pMXQ
+
 ## Instalação e Configuração
 
 ### Importar o Módulo
