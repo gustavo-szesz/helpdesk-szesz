@@ -1,4 +1,4 @@
-# Helpdesk Szesz 🛠️
+# Helpdesk Szesz 
 
 Projeto criado para ter comandos úteis para suporte técnico do N1 a N2|N3
 
