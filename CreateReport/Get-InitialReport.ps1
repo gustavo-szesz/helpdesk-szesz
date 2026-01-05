@@ -50,9 +50,12 @@ function Get-InitialReport {
     $networkInfo = $reportData | Where-Object { $_.Category -eq 'Network' } 
     $memoryInfo = $reportData | Where-Object { $_.Category -eq 'MemoryInfo' }
     $diskInfo = $reportData | Where-Object { $_.Category -eq 'DiskInfo' }
+    $cleanupInfo = $reportData | Where-Object { $_.Category -eq 'CleanupInfo' }
+    $topProcessesInfo = $reportData | Where-Object { $_.Category -eq 'TopProcess' }
 
     # Carrega o template
     $templatePath = Join-Path $PSScriptRoot "..\report-template.html"
+    $cssPath = Join-Path $PSScriptRoot "..\report-styles.css"
 
     if (-not (Test-Path $templatePath)) {
         Write-Error "Template não encontrado em: $templatePath"
@@ -60,6 +63,14 @@ function Get-InitialReport {
     }
 
     $template = Get-Content $templatePath -Raw
+
+    # Copia CSS para o mesmo diretório do HTML
+    if (Test-Path $cssPath) {
+        $cssDestination = Join-Path (Split-Path -Path $Path -Parent) "report-styles.css"
+        Copy-Item -Path $cssPath -Destination $cssDestination -Force
+    } else {
+        Write-Warning "CSS não encontrado em: $cssPath"
+    }
 
     # Gera HTML para SystemInfo (Card bonito)
     $systemInfoHtml = @"
@@ -106,6 +117,16 @@ function Get-InitialReport {
     # HTML para DiskInfo (Tabela)
     $diskInfoHtml = $diskInfo | ConvertTo-Html -Fragment -Property Drive, Label, FileSystem, TotalSize, UsedSpace, FreeSpace, UsedPercent, HealthStatus, Result
 
+    # top process de memoria
+    $topProcessesInfo = $reportData | Where-Object { $_.Category -eq 'TopProcess' }
+    $topProcessesHtml = $topProcessesInfo | ConvertTo-Html -Fragment -Property ProcessName, Instances, TotalMemoryMB, Company
+
+     # HTML para CleanupInfo (Tabela)
+    $cleanupInfoHtml = $cleanupInfo | ConvertTo-Html -Fragment -Property Location, Path, SizeGB, FileCount, Result
+
+    # HTML para TopProcesses (Tabela)
+    $topProcessesHtml = $topProcessesInfo | ConvertTo-Html -Fragment -Property ProcessName, Instances, TotalMemoryMB, Company
+
     # Substitui os placeholders no template
     $html = $template
     $html = $html -replace '{{REPORT_TITLE}}', 'Relatório de Configuração de Rede'
@@ -113,14 +134,16 @@ function Get-InitialReport {
     $html = $html -replace '{{SYSTEM_INFO}}', $systemInfoHtml
     $html = $html -replace '{{NETWORK_INFO}}', $networkInfoHtml
     $html = $html -replace '{{MEMORY_INFO}}', $memoryInfoHtml
+    $html = $html -replace '{{TOP_MEMORY_PROCESSES}}', $topProcessesHtml
     $html = $html -replace '{{DISK_INFO}}', $diskInfoHtml
+    $html = $html -replace '{{CLEANUP_INFO}}', $cleanupInfoHtml
     $html = $html -replace '{{TIMESTAMP}}', (Get-Date -Format 'dd/MM/yyyy HH:mm:ss')
 
     # Salva o arquivo
     $html | Out-File -FilePath $Path -Encoding UTF8
 
-    Write-Host "✅ Relatório gerado com sucesso!" -ForegroundColor Green
-    Write-Host "📄 Arquivo: $Path" -ForegroundColor Cyan
+    Write-Host "Relatório gerado com sucesso!" -ForegroundColor Green
+    Write-Host "Arquivo: $Path" -ForegroundColor Cyan
     
     # Abre no navegador se solicitado
     if ($Open) {
