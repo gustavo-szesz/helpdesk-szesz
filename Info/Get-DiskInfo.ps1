@@ -27,6 +27,21 @@ function Get-DiskInfo {
     }
 }
 
+function Get-DiskInfoJson {
+    [CmdletBinding()]
+    param ()
+    $timestamp = (Get-Date).ToString('o')
+    $items = Get-DiskInfo
+    return [PSCustomObject]@{
+        Category          = 'DiskInfo'
+        ComputerName      = $env:COMPUTERNAME
+        Timestamp         = $timestamp
+        Status            = 'OK'
+        Data              = $items
+    }
+    
+}
+
 function Get-DiskCleanupInfo {
     [CmdletBinding()]
     param (
@@ -71,4 +86,20 @@ function Get-DiskCleanupInfo {
             Result        = if ($winTempSizeGB -gt 5) { 'ALERT' } else { 'OK' }
         }
     }
+}
+
+function Get-DiskCleanupInfoJson {
+    [CmdletBinding()]
+    param ()
+
+    $timestamp = (Get-Date).ToString('o')
+    $items = Get-DiskCleanupInfo
+    return [PSCustomObject]@{
+        Category          = 'CleanupInfo'
+        ComputerName      = $env:COMPUTERNAME
+        Timestamp         = $timestamp
+        Status            = 'OK'
+        Data              = $items
+    }
+    
 }

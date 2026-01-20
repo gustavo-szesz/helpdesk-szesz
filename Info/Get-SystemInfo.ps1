@@ -19,4 +19,19 @@ function Get-SystemInfo {
     }
 }
 
+function Get-SystemInfoJson {
+    [CmdletBinding()]
+    param ()
+    $timestamp = (Get-Date).ToString('o')
+    $item = Get-SystemInfo
+    return [PSCustomObject]@{
+        Category          = 'SystemInfo'
+        ComputerName      = $env:COMPUTERNAME
+        Timestamp         = $timestamp
+        Status            = 'OK'
+        Data              = $item
+    }
+    
+}
+
 

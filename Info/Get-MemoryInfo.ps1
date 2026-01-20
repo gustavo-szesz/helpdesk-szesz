@@ -17,6 +17,22 @@ function Get-MemoryInfo {
     }
 }
 
+function Get-MemoryInfoJson {
+    [CmdletBinding()]
+    param ()
+    $timestamp = (Get-Date).ToString('o')
+    
+    $items = Get-MemoryInfo
+
+    return [PSCustomObject]@{
+        Category          = 'MemoryInfo'
+        ComputerName      = $env:COMPUTERNAME
+        Timestamp         = $timestamp
+        Status            = 'OK'
+        Data              = $items
+    }
+}
+
 function Get-TopMemoryProcesses {
     [CmdletBinding()]
     param (
@@ -43,4 +59,22 @@ function Get-TopMemoryProcesses {
         } |
         Sort-Object TotalMemoryMB -Descending |
         Select-Object -First $TopN
+}
+
+function Get-TopMemoryProcessesJson {
+    [CmdletBinding()]
+    param ()
+    
+    $timestamp = (Get-Date).ToString('o')
+
+    $items = Get-TopMemoryProcesses
+
+    return [PSCustomObject]@{
+        Category          = 'TopProcess'
+        ComputerName      = $env:COMPUTERNAME
+        Timestamp         = $timestamp
+        Status            = 'OK'
+        Data              = $items
+    }
+    
 }
