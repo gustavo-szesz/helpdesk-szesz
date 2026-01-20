@@ -33,8 +33,14 @@ function Get-InitialReport {
     # definir caminho como %temp%/report-poupa-tempo/ e criar o diretório se não existir
     if (-not $Path) {
         $computerName = $env:COMPUTERNAME
+        #$timestamp = Get-Date -Format 'yyyyMMdd_HHmmss'
+        #$Path = Join-Path $env:TEMP "report-poupa-tempo\IPConfig_${computerName}_${timestamp}.html"
+        #$directory = Split-Path -Path $Path -Parent
+        #if (-not (Test-Path -Path $directory)) {
+        #    New-Item -Path $directory -ItemType Directory | Out-Null
+        #}
         $timestamp = Get-Date -Format 'yyyyMMdd_HHmmss'
-        $Path = Join-Path $env:TEMP "report-poupa-tempo\IPConfig_${computerName}_${timestamp}.html"
+        $Path = Join-Path "C:\Users\gustavo.szesz\OneDrive - SHOPCIDADAO\Documentos\Reports" "IPConfig_${computerName}_${timestamp}.html"
         $directory = Split-Path -Path $Path -Parent
         if (-not (Test-Path -Path $directory)) {
             New-Item -Path $directory -ItemType Directory | Out-Null

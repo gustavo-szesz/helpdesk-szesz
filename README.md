@@ -129,3 +129,6 @@ Test-MicrophoneStatus
 Get-DiskInfo
 Get-MemoryInfo
 ```
+
+# 5. Convert to Json
+Get-IPConfigurationJson | ConvertTo-Json -Depth 10 > .\example.json
